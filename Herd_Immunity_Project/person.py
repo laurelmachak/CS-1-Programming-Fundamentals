@@ -44,14 +44,16 @@ class Person(object):
     def __init__(self, _id, is_vaccinated, infected=None):
         # TODO:  Finish this method.  Follow the instructions in the class documentation
         # to set the corret values for the following attributes.
-        self._id = None
-        self.is_vaccinated = None
-        self.is_alive = None
-        self.infected = None
+        self._id = _id #int
+        self.is_vaccinated = is_vaccinated #bool
+        self.is_alive = True #bool
+        self.infected = infected #None or name of virus
 
 
-    def did_survive_infection():
+    def did_survive_infection(self):
+        if self.infected != None:
+
         # TODO:  Finish this method. Follow the instructions in the class documentation
         # for resolve_infection.  If person dies, set is_alive to False and return False.
-        # If person lives, set is_vaccinated = True, infected = None, return True.  
+        # If person lives, set is_vaccinated = True, infected = None, return True.
         pass

@@ -85,7 +85,8 @@ class Simulation(object):
         # TODO: Create a Logger object and bind it to self.logger.  You should use this
         # logger object to log all events of any importance during the simulation.  Don't forget
         # to call these logger methods in the corresponding parts of the simulation!
-        self.logger = None
+        # <DONE>
+        self.logger = Logger(self.file_name)
 
         # This attribute will be used to keep track of all the people that catch
         # the infection during a given time step. We'll store each newly infected
@@ -104,13 +105,24 @@ class Simulation(object):
         # people vaccinated, correct number of initially infected people).
         population = []
         infected_count = 0
-        while len(population) != pop_size:
+        initial_healthy = self.population_size - initial_infected
+        while len(population) != self.population_size:
             if infected_count !=  initial_infected:
                 # TODO: Create all the infected people first, and then worry about the rest.
                 # Don't forget to increment infected_count every time you create a
                 # new infected person!
+                for person in range(initial_infected):
+                    population.append(Person(len(population)), False, True)
+                    infected_count += 1
                 pass
             else:
+                for person in range(initial_healthy):
+                    vac_check = random(0,1)
+                    if vac_check < vacc_percentage:
+                        vac_bool = True
+                    else:
+                        vac_bool = False
+                    population.append(Person(len(population)), vac_bool, False)
                 # Now create all the rest of the people.
                 # Every time a new person will be created, generate a random number between
                 # 0 and 1.  If this number is smaller than vacc_percentage, this person
